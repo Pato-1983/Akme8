@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<!-- Head -->
+<%- include('../partials/head.ejs') %> 
+
+<body>
+
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %> 
+
+    <main class="main-productEdit">
+        
+        <h3 class="register-title">Edicion de producto</h3>        
+    
+        <form class="productEdit-form" action="/products/edit/<%= product.id %>?_method=PUT"  method="POST" enctype="multipart/form-data">       
+
+            <div class="form-div">
+                <label for="name" class="form-label">Nombre del producto</label>
+                <input type="text" name="name" id="name" value= "<%= locals.product && product.name || locals.oldData && oldData.name %>
+                ">
+                <% if (locals.errors && errors.name) { %>
+                    <p class = "errorMessage"> <%= errors.name.msg %> </p>
+                <% } %>
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+            </div>   
+            
+            <div class="form-div">
+                <label for="description" class="form-label">Descripción</label>
+                <input type="text" name="description" id="description" value= "<%= locals.product && product.description || locals.oldData && oldData.description %>" required>
+                <% if (locals.errors && errors.description) { %>
+                    <p class = "errorMessage"> <%= errors.description.msg %> </p>
+                <% } %>
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+            </div>               
+        
+            <div class="form-div">
+                <label for="price" class="form-label">Precio</label>
+                <input type="text" name="price" id="price" value= "<%= locals.product && product.price || locals.oldData && oldData.price %>" required>
+                <% if (locals.errors && errors.price) { %>
+                    <p class = "errorMessage"> <%= errors.price.msg %> </p>
+                <% } %>
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+            </div>  
+            
+            <div class="form-div">
+                <label>Seleccionar imagen</label>
+                <input type="file" name="image" id="image" accept="jpg, png">
+                <% if (locals.errors && errors.image) { %>
+                    <p class = "errorMessage"> <%= errors.image.msg %> </p>
+                <% } %>
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+            </div>
+
+            <div class="form-div">
+                <label for="categoryId" class="form-label">Categoria</label>
+                <select name="categoryId" id="categoryId">
+
+                    <option value="0" disabled selected>Selecciona una categoría</option>
+                    <% for (let i=0; i < categories.length; i++) {%>
+                        <% if (categories[i].id==product.categoryId) { %>
+                            <option value="<%=categories[i].id%>" selected>
+                                <%=categories[i].name%>
+                            </option>
+                            <% } else { %>
+                                <option value="<%=categories[i].id%>">
+                                    <%=categories[i].name%>
+                                </option>
+                                <% }; %>
+                                    <% }; %>
+
+                </select>
+
+                <% if (locals.errors && errors.category) { %>
+                    <p class="errorMessage">
+                        <%= errors.category.msg %>
+                    </p>
+                    <% } %>
+                        <i class="fa-solid fa-circle-exclamation ok"></i>
+                        <p class="errorMessage"> </p>
+            </div>
+
+            <div class="form-div">
+                <label for="colorId" class="form-label">Color</label>
+                <select name="colorId" id="colorId">
+                    <% for (let i=0; i < colors.length; i++) {%>
+                        <% if (colors[i].id==product.colorId) { %>
+                            <option value="<%=colors[i].id%>" selected>
+                                <%=colors[i].name%>
+                            </option>
+                            <% } else { %>
+                                <option value="<%=colors[i].id%>">
+                                    <%=colors[i].name%>
+                                </option>
+                                <% }; %>
+                                    <% }; %>
+
+                </select>
+
+                <% if (locals.errors && errors.color) { %>
+                    <p class="errorMessage">
+                        <%= errors.color.msg %>
+                    </p>
+                    <% } %>
+                        <i class="fa-solid fa-circle-exclamation ok"></i>
+                        <p class="errorMessage"> </p>
+            </div>
+
+            <div class="form-div">
+                <label for="discount" class="form-label">Descuento</label>
+                <input type="text" name="discount" id="discount" value= "<%= locals.product && product.discount || locals.oldData && oldData.discount %>">
+                <% if (locals.errors && errors.discount) { %>
+                    <p class = "errorMessage"> <%= errors.discount.msg %> </p>
+                <% } %>
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>   
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="submit-button">Guardar cambios</button>
+            </div>
+    
+        </form>
+    
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/footer.ejs') %> 
+<script src="/js/productEditValidation.js"></script>
+</body>
+</html>

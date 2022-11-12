@@ -1,0 +1,36 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1a829eb2bf.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/navBar.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.5.3/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.5.3/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <title>Akme Safety | Home</title>
+</head>
+
+<header>
+    <body>    
+        <nav class="navBar">
+            <ul class="menu">
+                <li class="menuItem"><a class="link" href="/">Home</a></li>
+                <li class="menuItem container"><a class="link" href="/products/products">Productos <i class="fa-sharp fa-solid fa-caret-down"></i></a>
+                    <ul class="subMenu">
+                        <% categories.forEach(category => { %>                    
+                            <li class="menuItem"><a class="link" href="/"> <%= category.name %> </a></li>
+                        <% }) %>
+                    </ul></li>
+                <li class="menuItem"><a class="link" href="/contact">Contacto</a></li>
+                <li class="menuItem"><a class="link" href="/about">Nosotros</a></li> 
+                <li class="menuItem"><a class="link" href="/users/adminMenu">Admin</a></li>
+            </ul>             
+        </nav>
+        <div>
+            Hola
+        </div>
+        <script src="/js/navBar.js"></script>
+    </body>
+</header>

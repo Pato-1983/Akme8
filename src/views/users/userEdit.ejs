@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<!-- Head -->
+<%- include('../partials/head.ejs') %> 
+
+<body>
+
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %> 
+
+    <main class="main-productEdit">
+        
+        <h3 class="register-title">Edición de usuario</h3>        
+    
+        <form class="productEdit-form" action="/users/edit/<%= users.id %>?_method=PUT"  method="POST" enctype="multipart/form-data">       
+
+            <div class="form-div">
+                <label for="firstName" class="form-label">Nombre</label>
+                <input type="text" name="first_name" id="firstName" value= "<%= users.first_name %>" >
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+            </div>   
+            
+            <div class="form-div">
+                <label for="lastName" class="form-label">Apellido</label>
+                <input type="text" name="last_name" id="lastName" value= "<%= users.last_name %>" >
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+            </div>               
+        
+            <div class="form-div">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" name="email" id="email" value= "<%= users.email %>" >
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+            </div>
+
+            <div class="form-div">
+                <label for="celular" class="form-label">Celular</label>
+                <input type="text" name="celular" id="celular" value= "<%= users.celular %>" >
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+            </div>
+            
+            <div class="form-div">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="text" name="password" id="password" value= "<%= users.password %>" >
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+            </div>
+
+            <div class="form-div">
+                <div>
+                <label>Rol</label>
+            <select name="roleId" id="roles_Id">
+            <option value="0" disabled selected>Selecciona un rol</option>
+                <% for (let i = 0; i < roles.length; i++) {%> 
+                    <option value="<%=roles[i].id%>">
+                        <%=roles[i].name%>
+                    </option>
+                    <% }; %> 
+            </select>
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+                </div>
+            </div>
+
+            <div class="form-div">
+                <label>Seleccionar imagen</label>
+                <input type="file" name="image" id="image" accept="jpg, png">
+                <i class="fa-solid fa-circle-exclamation ok"></i>
+                <p class="errorMessage"> </p>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="submit-button">Guardar cambios</button>
+            </div>
+    
+        </form>
+    
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/footer.ejs') %> 
+    <script src="/js/userEditValidation.js"></script>
+</body>
+</html>
